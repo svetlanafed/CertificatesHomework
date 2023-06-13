@@ -1,4 +1,6 @@
-package com.example.certificateshomework.config;
+package com.example.certificateshomework.config.security;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 
 import com.example.certificateshomework.security.AuthenticationManager;
 import com.example.certificateshomework.security.BearerTokenServerAuthenticationConverter;
@@ -58,7 +60,9 @@ public class WebSecurityConfig {
                 })
                 .and()
                 .addFilterAt(bearerAuthenticationFilter(authenticationManager),
-                        SecurityWebFiltersOrder.AUTHENTICATION)
+                        SecurityWebFiltersOrder.AUTHENTICATION
+                )
+                .redirectToHttps(withDefaults()) //todo вроде не работает
                 .build();
     }
 

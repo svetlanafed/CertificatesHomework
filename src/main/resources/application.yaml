@@ -1,5 +1,13 @@
 server:
   port: 8083
+  ssl:
+    key-store-type: PKCS12
+    key-store: src/main/resources/bootsecurity.p12
+    key-store-password: password
+    key-alias: bootsecurity
+    enabled: true
+    trust-store: src/main/resources/bootsecurity.p12
+    trust-store-password: password
 
 spring:
   r2dbc:
