@@ -36,7 +36,7 @@ public class WebSecurityConfig {
     ) {
         return http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
-                .authorizeExchange()
+                .authorizeExchange() //todo deprecated
                 .pathMatchers(HttpMethod.OPTIONS)
                 .permitAll()
                 .pathMatchers(publicRoutes)
