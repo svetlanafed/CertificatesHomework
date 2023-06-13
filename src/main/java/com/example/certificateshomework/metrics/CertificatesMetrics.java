@@ -54,11 +54,16 @@ public class CertificatesMetrics {
                 X509Certificate certificate = (X509Certificate) truststore.getCertificate(alias);
                 Date now = new Date();
                 Date validUntil = certificate.getNotAfter();
-                long validityInMillis = Math.abs(validUntil.getTime() - now.getTime());
-                long validityInDays = TimeUnit.DAYS.convert(
-                        validityInMillis,
-                        TimeUnit.MILLISECONDS
-                );
+                long validityInMillis = validUntil.getTime() - now.getTime();
+                long validityInDays = 0L;
+
+                if (validityInMillis > 0) {
+                    validityInDays = TimeUnit.DAYS.convert(
+                            validityInMillis,
+                            TimeUnit.MILLISECONDS
+                    );
+                }
+
                 CertificateInfo certificateInfo = new CertificateInfo(
                         alias,
                         validityInDays
