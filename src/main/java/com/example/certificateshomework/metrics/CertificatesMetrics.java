@@ -55,7 +55,8 @@ public class CertificatesMetrics {
                 Date now = new Date();
                 Date validUntil = certificate.getNotAfter();
                 long validityInMillis = Math.abs(validUntil.getTime() - now.getTime());
-                long validityInDays = TimeUnit.DAYS.convert(validityInMillis,
+                long validityInDays = TimeUnit.DAYS.convert(
+                        validityInMillis,
                         TimeUnit.MILLISECONDS
                 );
                 CertificateInfo certificateInfo = new CertificateInfo(
